@@ -308,30 +308,6 @@ function startTimer() {
   }, 1000);
 }
 
-async function startGame() {
-  // If no puzzle is loaded, start a new game first
-  if (!puzzle || puzzle.length === 0) {
-    await newGame();
-  }
-  if (window.gameStarted) return;
-  window.gameStarted = true;
-  window.gameCompleted = false;
-  // reset finalElapsed and start timer
-  window.finalElapsed = undefined;
-  resetTimer();
-  startTimer();
-  // ensure start button disabled to avoid double-start
-  const startBtn = document.getElementById('start-game');
-  if (startBtn) startBtn.disabled = true;
-}
-
-function stopGameStart() {
-  // re-enable start button (used when new game loads)
-  const startBtn = document.getElementById('start-game');
-  if (startBtn) startBtn.disabled = false;
-  window.gameStarted = false;
-}
-
 async function newGame() {
   // Immediately stop any running timer when New Game is requested
   stopTimer();
@@ -360,9 +336,9 @@ async function newGame() {
     // remember the difficulty for this game (so changing the selector later doesn't affect recorded difficulty)
     window.currentDifficulty = diff || null;
     window.gameCompleted = false;
-    // reset timer state for this new game; do not auto-start — Start button begins timer
-    resetTimer();
-    stopGameStart();
+    window.finalElapsed = undefined;
+    // start the timer automatically as soon as the new puzzle is ready
+    startTimer();
   } catch (err) {
     // Network/fetch error: stop and reset timer, show error
     msg.style.color = '#d32f2f';
@@ -462,8 +438,6 @@ async function checkSolution() {
 // Wire buttons
 window.addEventListener('load', () => {
   document.getElementById('new-game').addEventListener('click', newGame);
-  const startBtn = document.getElementById('start-game');
-  if (startBtn) startBtn.addEventListener('click', () => startGame());
   const hintBtn = document.getElementById('hint-button');
   if (hintBtn) hintBtn.addEventListener('click', requestHint);
   document.getElementById('check-solution').addEventListener('click', checkSolution);
