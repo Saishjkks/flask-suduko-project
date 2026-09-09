@@ -1,33 +1,40 @@
-Flask Sudoku Game
+# Flask Sudoku Game
+
 A feature-rich Sudoku game built with Python Flask and enhanced with GitHub Copilot.
 
-Features
-9×9 Sudoku board
-Three difficulty levels:
-Easy — 45 prefilled cells
-Medium — 35 prefilled cells
-Hard — 25 prefilled cells
-Every generated puzzle has exactly one unique solution
-Prefilled cells are locked
-Immediate visual feedback for invalid moves
-Check Solution functionality
-Hint functionality that fills and locks one correct cell
-Puzzle completion detection and congratulations message
-Game timer
-Top 10 fastest-times leaderboard
-Player name, time, difficulty, and hint count recorded
-Leaderboard persistence using browser localStorage
-Light and dark modes
-Alternating styling for the 3×3 Sudoku blocks
-Responsive layout for different screen sizes
-Technology
-Python
-Flask
-JavaScript
-HTML
-CSS
-pytest
-Project Structure
+## Features
+
+- 9×9 Sudoku board
+- Three difficulty levels:
+  - Easy — 45 prefilled cells
+  - Medium — 35 prefilled cells
+  - Hard — 25 prefilled cells
+- Every generated puzzle has exactly one unique solution
+- Prefilled cells are locked
+- Immediate visual feedback for invalid moves
+- Check Solution functionality
+- Hint functionality that fills and locks one correct cell
+- Puzzle completion detection and congratulations message
+- Game timer
+- Top 10 fastest-times leaderboard
+- Player name, time, difficulty, and hint count recorded
+- Leaderboard persistence using browser localStorage
+- Light and dark modes
+- Alternating styling for the 3×3 Sudoku blocks
+- Responsive layout for different screen sizes
+
+## Technology
+
+- Python
+- Flask
+- JavaScript
+- HTML
+- CSS
+- pytest
+
+## Project Structure
+
+```text
 starter/
 ├── app.py
 ├── sudoku_logic.py
@@ -149,5 +156,3 @@ The development process included:
 9. Re-running the tests after corrections.
 
 The `Screenshots/` directory contains evidence of the development process, Copilot interactions, testing, and major implemented features.
-
-# flask-suduko-project
